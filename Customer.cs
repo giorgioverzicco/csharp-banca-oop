@@ -7,6 +7,9 @@ public class Customer
     public string FiscalCode { get; }
     public decimal Salary { get; }
 
+    public string FullName => $"{FirstName} {LastName}";
+    public string FormattedSalary => $"{Salary:C}";
+
     public Customer(
         string firstName,
         string lastName,

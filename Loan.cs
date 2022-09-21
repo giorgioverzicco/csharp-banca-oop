@@ -11,6 +11,8 @@ public class Loan
     public DateOnly StartTime { get; }
     public DateOnly EndTime { get; }
 
+    public string FormattedAmount => $"{Amount:C}";
+
     private Loan()
     {
         _lastLoanId++;

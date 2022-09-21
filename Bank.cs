@@ -1,18 +1,26 @@
+using System.Collections.ObjectModel;
+
 namespace csharp_banca_oop;
 
 public class Bank
 {
-    private readonly List<Customer> _customers = new();
-    private readonly List<Loan> _loans = new();
+    private readonly List<Customer> _customers;
+    private readonly List<Loan> _loans;
     
     public string Name { get; }
+    public ReadOnlyCollection<Loan> Loans { get; }
 
     public Bank()
     {
+        _customers = new List<Customer>();
+        _loans = new List<Loan>();
+        
         Name = "No Name";
+        Loans = _loans.AsReadOnly();
     }
 
     public Bank(string name)
+        : this()
     {
         Name = name;
     }
