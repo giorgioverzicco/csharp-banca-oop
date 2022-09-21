@@ -68,7 +68,7 @@ public static class SummaryPrinter
                     loan.Holder.FullName,
                     loan.Holder.FiscalCode,
                     loan.FormattedAmount, 
-                    loan.Instalment,
+                    loan.FormattedInstalment,
                     loan.StartTime,
                     loan.EndTime);
             Console.WriteLine(loanInfo);
@@ -104,7 +104,7 @@ public static class SummaryPrinter
                     loan.Holder.FullName, 
                     loan.Holder.FiscalCode,
                     loan.FormattedAmount, 
-                    loan.Instalment,
+                    loan.FormattedInstalment,
                     loan.StartTime,
                     loan.EndTime);
             Console.WriteLine(dataText);

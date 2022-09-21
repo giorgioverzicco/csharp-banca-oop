@@ -7,11 +7,12 @@ public class Loan
     public int ID { get; }
     public Customer Holder { get; set; }
     public decimal Amount { get; }
-    public int Instalment { get; }
+    public decimal Instalment { get; }
     public DateOnly StartTime { get; }
     public DateOnly EndTime { get; }
 
     public string FormattedAmount => $"{Amount:C}";
+    public string FormattedInstalment => $"{Instalment:C}";
 
     private Loan()
     {
@@ -23,26 +24,34 @@ public class Loan
     public Loan(
         Customer holder, 
         decimal amount, 
-        int instalment, 
-        DateOnly startTime, 
-        DateOnly endTime)
+        byte months)
         : this()
     {
         Holder = holder;
         Amount = amount;
-        Instalment = instalment;
-        StartTime = startTime;
-        EndTime = endTime;
+        Instalment = amount / months;
+        StartTime = DateOnly.FromDateTime(DateTime.Now);
+        EndTime = StartTime.AddMonths(months);
     }
-    
+
+    public Loan(
+        Customer holder,
+        decimal amount,
+        byte months,
+        DateOnly startTime)
+        : this(holder, amount, months)
+    {
+        StartTime = startTime;
+    }
+
     public override string ToString()
     {
         return
             "Holder:\n" +
             $"{Holder}\n" +
             "Loan:" +
-            $"Amount: {Amount}\n" +
-            $"Instalment: {Instalment}\n" +
+            $"Amount: {FormattedAmount}\n" +
+            $"Instalment: {FormattedInstalment}\n" +
             $"Start Time: {StartTime}\n" +
             $"End Time: {EndTime}\n";
     }

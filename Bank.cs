@@ -70,7 +70,7 @@ public class Bank
         return loans.Sum(x => x.Amount);
     }
 
-    public int GetRemainingInstalment(string fiscalCode)
+    public decimal GetRemainingInstalment(string fiscalCode)
     {
         var loans = FetchLoans(fiscalCode);
         var today = DateOnly.FromDateTime(DateTime.Now);
