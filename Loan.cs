@@ -32,4 +32,16 @@ public class Loan
         StartTime = startTime;
         EndTime = endTime;
     }
+    
+    public override string ToString()
+    {
+        return
+            "Holder:\n" +
+            $"{Holder}\n" +
+            "Loan:" +
+            $"Amount: {Amount}\n" +
+            $"Instalment: {Instalment}\n" +
+            $"Start Time: {StartTime}\n" +
+            $"End Time: {EndTime}\n";
+    }
 }

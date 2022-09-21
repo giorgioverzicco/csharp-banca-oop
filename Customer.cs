@@ -18,4 +18,15 @@ public class Customer
         FiscalCode = fiscalCode;
         Salary = salary;
     }
+
+    public override int GetHashCode() => FiscalCode.GetHashCode();
+
+    public override string ToString()
+    {
+        return
+            $"First Name: {FirstName}\n" +
+            $"Last Name: {LastName}\n" +
+            $"Fiscal Code: {FiscalCode}\n" +
+            $"Salary: {Salary}\n";
+    }
 }
