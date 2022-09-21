@@ -2,8 +2,8 @@ namespace csharp_banca_oop;
 
 public class Bank
 {
-    private List<Customer> _customers = new();
-    private List<Loan> _loans = new();
+    private readonly List<Customer> _customers = new();
+    private readonly List<Loan> _loans = new();
     
     public string Name { get; }
 
