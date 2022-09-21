@@ -24,19 +24,12 @@ public class Bank
 
     public void EditCustomer(string fiscalCode, Customer newCustomer)
     {
-        try
-        {
-            var oldCustomer = FetchCustomer(fiscalCode);
-            int indexOfCustomer = _customers.IndexOf(oldCustomer);
-            _customers[indexOfCustomer] = newCustomer;
+        var oldCustomer = FetchCustomer(fiscalCode);
+        int indexOfCustomer = _customers.IndexOf(oldCustomer);
+        _customers[indexOfCustomer] = newCustomer;
 
-            var loans = FetchLoans(fiscalCode);
-            loans.ForEach(x => x.Holder = newCustomer);
-        }
-        catch (InvalidOperationException)
-        {
-            throw;
-        }
+        var loans = FetchLoans(fiscalCode);
+        loans.ForEach(x => x.Holder = newCustomer);
     }
 
     public Customer FetchCustomer(string fiscalCode)
