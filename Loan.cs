@@ -43,6 +43,15 @@ public class Loan
     {
         StartTime = startTime;
     }
+    
+    public int GetMonthsLeft() {
+        var endTimeDate = EndTime.ToDateTime(TimeOnly.MinValue);
+        var today = DateTime.Now;
+        var difference = endTimeDate - today;
+        var monthsLeft = difference.Days / 30;
+
+        return monthsLeft;
+    }
 
     public override string ToString()
     {

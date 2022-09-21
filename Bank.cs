@@ -27,6 +27,9 @@ public class Bank
 
     public void AddCustomer(Customer customer)
     {
+        if (_customers.Contains(customer))
+            throw new InvalidOperationException("This customer is already registered.");
+        
         _customers.Add(customer);
     }
 
@@ -76,6 +79,8 @@ public class Bank
         var today = DateOnly.FromDateTime(DateTime.Now);
         var loansTillToday = loans.Where(x => x.EndTime >= today);
 
-        return loansTillToday.Sum(x => x.Instalment);
+        return loansTillToday.Sum(
+            x => 
+                x.Instalment * x.GetMonthsLeft());
     }
 }
