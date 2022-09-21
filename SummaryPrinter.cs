@@ -43,7 +43,7 @@ public static class SummaryPrinter
 
         if (loans.Count <= 0)
         {
-            Console.WriteLine("There are no loans for this customer.");
+            Console.WriteLine("There are no loans.");
             return;
         }
         
