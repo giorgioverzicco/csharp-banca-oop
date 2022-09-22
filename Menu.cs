@@ -67,7 +67,7 @@ public static class Menu
         byte months = Convert.ToByte(Console.ReadLine());
 
         bank.AddLoan(
-            new Loan(customer, amount, months));
+            new Loan(customer, amount, months, DateOnly.Parse("01/01/1998")));
     }
 
     private static void FindCustomer(Bank bank)

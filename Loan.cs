@@ -3,13 +3,27 @@ namespace csharp_banca_oop;
 public class Loan
 {
     private static int _lastLoanId = 0;
+
+    private int _months;
     
     public int ID { get; }
     public Customer Holder { get; set; }
     public decimal Amount { get; }
     public decimal Instalment { get; }
-    public DateOnly StartTime { get; }
-    public DateOnly EndTime { get; }
+
+    private DateOnly _startTime;
+    public DateOnly StartTime
+    {
+        get => _startTime;
+
+        private init
+        {
+            _startTime = value;
+            EndTime = _startTime.AddMonths(_months);
+        }
+    }
+
+    public DateOnly EndTime { get; private init; }
 
     public string FormattedAmount => $"{Amount:C}";
     public string FormattedInstalment => $"{Instalment:C}";
@@ -27,11 +41,12 @@ public class Loan
         byte months)
         : this()
     {
+        _months = months;
+        
         Holder = holder;
         Amount = amount;
         Instalment = amount / months;
         StartTime = DateOnly.FromDateTime(DateTime.Now);
-        EndTime = StartTime.AddMonths(months);
     }
 
     public Loan(
